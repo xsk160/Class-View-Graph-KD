@@ -9,7 +9,7 @@ def class_loss(logits_mlp, logits_gnn, temperature):
     log_pred_mlp = torch.log(pred_mlp)
     
     loss = F.kl_div(
-        pred_mlp,
+        log_pred_mlp,
         pred_gnn,
         reduction='sum'
     ) * (temperature ** 2)
